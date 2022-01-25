@@ -1,9 +1,9 @@
 <template>
   <div>
     <Card :card="user" class="sticky top-3" />
-    <button class="h-16 w-16 rounded-full" @click="temporarlyShowSnackBar">
+    <!-- <button class="h-16 w-16 rounded-full" @click="temporarlyShowSnackBar">
       SnackBar
-    </button>
+    </button> -->
     <SnackBar v-if="showSnackBar" v-bind:type="type" :message="message" />
     <form
       @submit.prevent="createCard"

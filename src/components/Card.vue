@@ -5,14 +5,8 @@
     class="w-96 h-60 mx-auto my-4 rounded-lg p-4 shadow-xl flex flex-col justify-between"
   >
     <div class="flex justify-between items-start">
-      <div class="flex flex-col">
-        <Wifi :iconsFill="iconsFill" />
-        <Chip :iconsFill="iconsFill" :chipLine="chipLine" />
-      </div>
-      <Bitcoin v-if="card.vendor === 'Handelsbanken'" />
-      <Evil v-if="card.vendor === 'Swedbank'" />
-      <Blockchain v-if="card.vendor === 'Nordea'" />
-      <Ninja v-if="card.vendor === 'Danskbank'" />
+      <WifiChip v-bind:iconsFill="iconsFill" />
+      <Logo v-bind:vendor="card.vendor" />
     </div>
     <div class="mt-2 mb-4 flex justify-between">
       <span class="text-3xl">{{ fillSpan1 }}</span>
@@ -34,9 +28,10 @@
 </template>
 
 <script>
-import { Bitcoin, Blockchain, Ninja, Wifi, Chip, Evil } from "./icons";
+import Logo from "./icons/Logo.vue";
+import WifiChip from "./icons/WifiChip.vue";
 export default {
-  components: { Blockchain, Bitcoin, Ninja, Wifi, Chip, Evil },
+  components: { Logo, WifiChip },
   props: ["card"],
   data() {
     return {
