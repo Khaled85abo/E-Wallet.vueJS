@@ -40,6 +40,8 @@ export default {
     removeCard(index) {
       console.log("remove card with index: ", index);
       console.log("target card: ", this.cards[index]);
+      this.cards.splice(index, 1);
+      this.persist();
     },
     addCard(card) {
       console.log("from app.vue", card);

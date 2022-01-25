@@ -1,6 +1,6 @@
 <template>
   <div
-    class="snackbar fixed bottom-1/3 left-1/2 -translate-x-1/2 max-w-md font-bold text-white"
+    class="snackbar fixed bottom-1/3 left-1/2 -translate-x-1/2 max-w-md font-bold text-white z-20"
   >
     <div :class="type" class="p-4 rounded-lg shadow-sm flex items-center">
       <svg
