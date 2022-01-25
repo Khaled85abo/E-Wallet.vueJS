@@ -81,15 +81,16 @@ export default {
         owner: "",
         validThru: "",
         cardNumber: "",
-        cvc: null,
+        cvc: "",
         vendor: "default",
       },
     };
   },
   methods: {
     createCard() {
+      const user = this.user;
       // console.log(this.user);
-      const number = this.user.cardNumber.slice(0, 16);
+      const number = user.cardNumber.slice(0, 16);
       const existingCard = this.cards.filter(
         (card) => card.cardNumber === number
       );
@@ -99,6 +100,14 @@ export default {
           "error",
           "You already have a card with this number!"
         );
+        return;
+      }
+      if (
+        user.cardNumber.length === 0 ||
+        user.validThru.length === 0 ||
+        user.cvc.length === 0
+      ) {
+        this.temporarlyShowSnackBar("error", "All fields are required!");
         return;
       }
       const card = { ...this.user, cardNumber: number };
