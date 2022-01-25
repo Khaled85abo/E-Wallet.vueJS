@@ -1,14 +1,24 @@
 <template>
   <div>
     <h1 class="uppercase">E-Wallet</h1>
-    <div class="active" v-if="cards.length > 1">
+    <div class="active">
       <h6 class="uppercase m-4 text-gray-500">Active Card</h6>
       <!-- Is computed function (theActiveCard) is better than just using the activeCardIndex -->
       <!-- <Card :card="theActiveCard" :key="activeCardIndex" /> -->
-      <Card :card="cards[activeCardIndex]" :key="activeCardIndex" />
+      <Card
+        :card="cards[activeCardIndex]"
+        :key="activeCardIndex"
+        @click.native="ShowDeleteDialog"
+      />
     </div>
+    <SnackBar
+      :message="message"
+      v-if="showSnackBar"
+      :type="type"
+      @remove="$emit('remove', activeCardIndex)"
+    />
     <div
-      v-if="cards.length > 0"
+      v-if="cards.length > 1"
       class="collection"
       v-bind:style="calcDivHeight"
     >
@@ -33,11 +43,15 @@
 
 <script>
 import Card from "../components/Card";
+import SnackBar from "../components/SnackBar.vue";
 export default {
-  props: ["cards"],
-  components: { Card },
+  props: ["cards", "delayTime"],
+  components: { Card, SnackBar },
   data() {
     return {
+      type: "info",
+      showSnackBar: false,
+      message: "Do You want to delete this card?",
       activeCardIndex: 0,
       transformX: "translateX(-50%)",
       transformY: "translateY(0)",
@@ -47,6 +61,21 @@ export default {
     showCard(ev, i) {
       this.activeCardIndex = i;
       console.log("activeCard: ", this.activeCardIndex);
+    },
+    ShowDeleteDialog() {
+      console.log("show delete dialog");
+      this.temporarlyShowSnackBar("error", this.message);
+    },
+    temporarlyShowSnackBar(type, message) {
+      if (type && message) {
+        this.type = type;
+        this.message = message;
+      }
+
+      this.showSnackBar = true;
+      this.timeOutCode = setTimeout(() => {
+        this.showSnackBar = false;
+      }, this.delayTime * 1000);
     },
   },
 

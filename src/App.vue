@@ -4,7 +4,13 @@
       <a @click="route = 'home'">Home</a>
       <a @click="route = 'newcard'">Add Card</a>
     </nav>
-    <Home v-if="route === 'home'" :cards="cards" @addcard="route = 'newcard'" />
+    <Home
+      v-if="route === 'home'"
+      :cards="cards"
+      @addcard="route = 'newcard'"
+      :delayTime="delayTime"
+      @remove="removeCard"
+    />
     <NewCard
       v-if="route === 'newcard'"
       @card="addCard"
@@ -30,6 +36,10 @@ export default {
   methods: {
     persist() {
       localStorage.setItem("walletCards", JSON.stringify(this.cards));
+    },
+    removeCard(index) {
+      console.log("remove card with index: ", index);
+      console.log("target card: ", this.cards[index]);
     },
     addCard(card) {
       console.log("from app.vue", card);
