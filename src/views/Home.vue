@@ -25,7 +25,7 @@
       <Card
         v-for="(card, i) in cards"
         :key="i"
-        v-on:click="showCard($event, i)"
+        @click="showCard($event, i)"
         :card="card"
         :style="{
           transform: 'translateX(-50%)' + 'translateY(' + i * 4 + 'rem)',
