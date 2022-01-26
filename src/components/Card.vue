@@ -1,6 +1,7 @@
 // :class="card.vendor"
 <template>
   <article
+    @click="$emit('click')"
     :class="card.vendor"
     class="w-96 h-60 mx-auto my-4 rounded-lg p-4 shadow-xl flex flex-col justify-between"
   >

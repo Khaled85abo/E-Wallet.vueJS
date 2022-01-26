@@ -11,6 +11,11 @@
       class="max-w-sm mt-8 mx-auto text-left uppercase"
     >
       <label for="number" class="block">card number </label>
+      <!--
+        type="text"
+        // regular expression
+        onkeypress="return /[0-9]/i.test(event.key)" 
+            -->
       <input
         type="number"
         id="number"
