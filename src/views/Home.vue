@@ -8,7 +8,7 @@
       <Card
         :card="cards[activeCardIndex]"
         :key="activeCardIndex"
-        @click.native="ShowDeleteDialog"
+        @click="ShowDeleteDialog"
       />
     </div>
     <SnackBar
@@ -25,7 +25,7 @@
       <Card
         v-for="(card, i) in cards"
         :key="i"
-        v-on:click.native="showCard($event, i)"
+        v-on:click="showCard($event, i)"
         :card="card"
         :style="{
           transform: 'translateX(-50%)' + 'translateY(' + i * 4 + 'rem)',
