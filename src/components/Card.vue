@@ -127,21 +127,6 @@ export default {
 </script>
 
 <style lang="scss">
-.Nordea {
-  background: #0a126e;
-  color: #ece6e6;
-}
-.Swedbank {
-  background: #c59801;
-}
-.Danskbank {
-  background: #002c44;
-  color: lightgray;
-}
-.Handelsbanken {
-  background: #6a6a69;
-  color: lightgray;
-}
 .default {
   background: lightgray;
 }

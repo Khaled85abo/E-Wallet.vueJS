@@ -3,3 +3,30 @@
 @tailwind components;
 
 @tailwind utilities;
+
+.error {
+  @apply bg-red-800;
+}
+.success {
+  @apply bg-yellow-300 text-black;
+}
+.info {
+  @apply bg-blue-400;
+}
+
+.Nordea {
+  @apply bg-Nordea text-lightWhite;
+}
+
+.Swedbank {
+  @apply bg-Swedbank;
+}
+.Danskbank {
+  @apply bg-Danskbank text-lightWhite;
+}
+.Handelsbanken {
+  @apply bg-Handelsbanken text-lightWhite;
+}
+/* .default {
+  background: lightgray;
+} */

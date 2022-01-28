@@ -1,8 +1,16 @@
 <template>
-  <div id="app">
-    <nav>
-      <a @click="route = 'home'">Home</a>
-      <a @click="route = 'newcard'">Add Card</a>
+  <div id="app" class="text-center mt-2">
+    <nav class="max-w-xs mx-auto mb-8 flex justify-between">
+      <a
+        class="font-bold text-lg bg-blue-200 text-black p-3 rounded-full"
+        @click="route = 'home'"
+        >Home</a
+      >
+      <a
+        class="font-bold text-lg bg-blue-200 text-black p-3 rounded-full"
+        @click="route = 'newcard'"
+        >Add Card</a
+      >
     </nav>
     <Home
       v-if="route === 'home'"
@@ -65,35 +73,3 @@ export default {
   },
 };
 </script>
-
-<style lang="scss">
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-#app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 10px;
-}
-
-nav {
-  max-width: 250px;
-  margin: 0 auto 2rem auto;
-  display: flex;
-  justify-content: space-between;
-  a {
-    cursor: pointer;
-    font-weight: bold;
-    font-size: 1.2rem;
-    background: rgb(92, 159, 218);
-    color: white;
-    padding: 0.7rem;
-    border-radius: 9999px;
-  }
-}
-</style>

@@ -54,16 +54,3 @@ export default {
   },
 };
 </script>
-
-<style lang="scss" scoped>
-.error {
-  background: #ff0000;
-}
-.success {
-  background: rgb(47, 199, 47);
-  color: black;
-}
-.info {
-  background: blue;
-}
-</style>
