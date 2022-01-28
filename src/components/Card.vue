@@ -1,4 +1,3 @@
-// :class="card.vendor"
 <template>
   <article
     @click="$emit('click')"

@@ -6,6 +6,7 @@
       <!-- Is computed function (theActiveCard) is better than just using the activeCardIndex -->
       <!-- <Card :card="theActiveCard" :key="activeCardIndex" /> -->
       <Card
+        v-if="cards.length > 0"
         :card="cards[activeCardIndex]"
         :key="activeCardIndex"
         @click="ShowDeleteDialog"
@@ -16,7 +17,7 @@
       v-if="showSnackBar"
       :type="type"
       @hide="hideSnackBar"
-      @remove="$emit('remove', activeCardIndex)"
+      @remove="removeCard"
     />
     <div
       v-if="cards.length > 1"
@@ -68,6 +69,10 @@ export default {
     },
     hideSnackBar() {
       this.showSnackBar = false;
+    },
+    removeCard() {
+      this.showSnackBar = false;
+      this.$emit("remove", this.activeCardIndex);
     },
     temporarlyShowSnackBar(type, message) {
       if (type && message) {
