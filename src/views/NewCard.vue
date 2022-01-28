@@ -4,7 +4,12 @@
     <!-- <button class="h-16 w-16 rounded-full" @click="temporarlyShowSnackBar">
       SnackBar
     </button> -->
-    <SnackBar v-if="showSnackBar" v-bind:type="type" :message="message" />
+    <SnackBar
+      v-if="showSnackBar"
+      v-bind:type="type"
+      :message="message"
+      @hide="hideSnackBar"
+    />
     <form
       @submit.prevent="createCard"
       id="form"
@@ -57,6 +62,7 @@
         v-model="user.vendor"
         class="p-4 block w-full rounded-lg h-14 mt-1 mb-4 text-lg border-black border-2 border-solid"
       >
+        <option :value="{}" selected disabled hidden>Choose your vendor</option>
         <option v-for="(bank, i) of vendors" :key="i">{{ bank }}</option>
       </select>
 
@@ -126,6 +132,9 @@ export default {
         vendor: "",
       };
     },
+    hideSnackBar() {
+      this.showSnackBar = false;
+    },
     temporarlyShowSnackBar(type, message) {
       if (type && message) {
         this.type = type;
@@ -133,9 +142,6 @@ export default {
       }
 
       this.showSnackBar = true;
-      this.timeOutCode = setTimeout(() => {
-        this.showSnackBar = false;
-      }, this.delayTime * 1000);
     },
   },
   computed: {

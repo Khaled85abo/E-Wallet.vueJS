@@ -1,6 +1,8 @@
 <template>
   <div
     class="snackbar fixed bottom-1/3 left-1/2 -translate-x-1/2 max-w-md font-bold text-white z-20"
+    @mouseenter="stopTimeOut"
+    @mouseleave="startTimeOut"
   >
     <div :class="type" class="p-4 rounded-lg shadow-sm flex items-center">
       <svg
@@ -31,6 +33,25 @@
 <script>
 export default {
   props: ["type", "message"],
+  data() {
+    return {
+      timeDelay: 2,
+      killTimeout: null,
+    };
+  },
+  methods: {
+    startTimeOut() {
+      this.killTimeout = setTimeout(() => {
+        this.$emit("hide");
+      }, this.timeDelay * 1000);
+    },
+    stopTimeOut() {
+      clearTimeout(this.killTimeout);
+    },
+  },
+  mounted() {
+    this.startTimeOut();
+  },
 };
 </script>
 

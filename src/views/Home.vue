@@ -15,6 +15,7 @@
       :message="message"
       v-if="showSnackBar"
       :type="type"
+      @hide="hideSnackBar"
       @remove="$emit('remove', activeCardIndex)"
     />
     <div
@@ -63,19 +64,17 @@ export default {
       console.log("activeCard: ", this.activeCardIndex);
     },
     ShowDeleteDialog() {
-      console.log("show delete dialog");
       this.temporarlyShowSnackBar("error", this.message);
+    },
+    hideSnackBar() {
+      this.showSnackBar = false;
     },
     temporarlyShowSnackBar(type, message) {
       if (type && message) {
         this.type = type;
         this.message = message;
       }
-
       this.showSnackBar = true;
-      this.timeOutCode = setTimeout(() => {
-        this.showSnackBar = false;
-      }, this.delayTime * 1000);
     },
   },
 
