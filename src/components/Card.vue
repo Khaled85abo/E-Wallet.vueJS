@@ -8,11 +8,8 @@
       <WifiChip v-bind:iconsFill="iconsFill" />
       <Logo v-bind:vendor="card.vendor" />
     </div>
-    <div class="mt-2 mb-4 flex justify-between">
-      <span class="text-3xl">{{ fillSpan1 }}</span>
-      <span class="text-3xl">{{ fillSpan2 }}</span>
-      <span class="text-3xl">{{ fillSpan3 }}</span>
-      <span class="text-3xl">{{ fillSpan4 }}</span>
+    <div class="flex justify-center text-4xl">
+      <span>{{ spacedCardNumber }}</span>
     </div>
     <div class="flex justify-between uppercase">
       <div class="text-left">
@@ -38,58 +35,24 @@ export default {
       wifiFill: "white",
       chipFill: "black",
       bgColor: "",
-      span1: null,
-      span2: null,
-      span3: null,
-      span4: null,
       valid1: null,
       valid2: null,
     };
   },
   computed: {
-    fillSpan1() {
-      let span = "";
-      for (let i = 0; i < 4; i++) {
+    spacedCardNumber() {
+      let spaced = "";
+      for (let i = 0; i < 16; i++) {
+        if (i % 4 === 0) {
+          spaced += " ";
+        }
         if (this.card.cardNumber[i]) {
-          span += this.card.cardNumber[i];
+          spaced += this.card.cardNumber[i];
         } else {
-          span += "X";
+          spaced += "x";
         }
       }
-      return span;
-    },
-    fillSpan2() {
-      let span = "";
-      for (let i = 4; i < 8; i++) {
-        if (this.card.cardNumber[i]) {
-          span += this.card.cardNumber[i];
-        } else {
-          span += "X";
-        }
-      }
-      return span;
-    },
-    fillSpan3() {
-      let span = "";
-      for (let i = 8; i < 12; i++) {
-        if (this.card.cardNumber[i]) {
-          span += this.card.cardNumber[i];
-        } else {
-          span += "X";
-        }
-      }
-      return span;
-    },
-    fillSpan4() {
-      let span = "";
-      for (let i = 12; i < 16; i++) {
-        if (this.card.cardNumber[i]) {
-          span += this.card.cardNumber[i];
-        } else {
-          span += "X";
-        }
-      }
-      return span;
+      return spaced;
     },
     fillValid1() {
       let output = "";
